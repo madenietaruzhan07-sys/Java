@@ -1,30 +1,27 @@
-import java.util.Scanner;
+import interfaces.ILearner;
+import interfaces.IWorker;
+import model.Employee;
+import model.Human;
+import model.Student;
+
+public class Main {
     public static void main(String[] args) {
+        Human humanRef = new Employee(25, "Sanzhar", false, "Software Developer", 300000f);
+        IWorker workerRef = new Employee(30, "Saule", false, "Project Manager", 350000f);
+        ILearner learnerRef = new Student(18, "Aruzhan", true, "Astana IT University", 2.9f, "250555");
+        Student studentObj = new Student(19, "Nurasyl", true, "AITU", 3.2f, "250864");
 
-        Scanner scanner = new Scanner(System.in);
+        humanRef.introduce();
+        System.out.println(humanRef.getType());
 
-        System.out.print("Name: ");
-        String name = scanner.nextLine();
+        workerRef.work();
+        System.out.println("Salary: " + workerRef.getSalary());
 
-        System.out.print("Age: ");
-        int age = scanner.nextInt();
+        System.out.println("Company: " + Employee.COMPANY_NAME);
 
-        System.out.print("Is student (true/false): ");
-        boolean isStudent = scanner.nextBoolean();
+        learnerRef.study();
+        System.out.println("GPA: " + learnerRef.getGPA());
 
-        Human human = new Human(age, name, isStudent);
-
-        Employee employee = new Employee(25, "Sanzhar", false, "Software Developer", 252000.05f);
-
-        Student student = new Student(19, "Ayana", true, "Astana IT university", 3.3f);
-
-        human.setAge(human.getAge() + 1);
-
-        human.introduce();
-        employee.introduce();
-        student.introduce();
-
-        System.out.println(employee.getType());
-        System.out.println("Company: " + Employee.companyName);
+        studentObj.printStudentId();
     }
 }
